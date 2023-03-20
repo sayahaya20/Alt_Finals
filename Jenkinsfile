@@ -9,7 +9,7 @@ pipeline {
         stage("Create nginx-conroller") {
             steps {
                 script {
-                    dir('nginx-controller') {
+                    dir('Altschool_Exam/nginx-controller') {
                        sh "aws eks --region us-east-1 update-kubeconfig --name demo"
                         sh "terraform init"
                         sh "terraform apply -auto-approve"
@@ -21,7 +21,7 @@ pipeline {
         stage("Create prometheus") {
             steps {
                 script {
-                    dir('prometheus') {
+                    dir('Altschool_Exam/prometheus') {
                         sh "terraform init"
                         sh "terraform apply -auto-approve"
                     }
@@ -32,7 +32,7 @@ pipeline {
         stage("Deploy voting-app to EKS") {
             steps {
                 script {
-                    dir('vote-app') {
+                    dir('Altschool_Exam/vote-app') {
                         sh "terraform init"
                         sh "terraform apply -auto-approve"
                     }
@@ -43,7 +43,7 @@ pipeline {
         stage("Deploy sock-shop to EKS") {
             steps {
                 script {
-                    dir('sock-shop-app') {
+                    dir('Altschool_Exam/sock-shop-app') {
                         sh "terraform init"
                         sh "terraform apply -auto-approve"
                     }
@@ -54,7 +54,7 @@ pipeline {
         stage("Deploy ingress rule to EKS") {
             steps {
                 script {
-                    dir('ingress-rule') {
+                    dir('Altschool_Exam/ingress-rule') {
                         sh "terraform init"
                         sh "terraform apply -auto-approve"
                     }
